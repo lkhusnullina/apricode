@@ -4,7 +4,7 @@ export interface Task {
   id: number;
   title: string;
   isChecked: boolean;
-  children: Task[];
+  subTasks: Task[];
 }
 
 class TaskStore {
@@ -14,20 +14,28 @@ class TaskStore {
     makeAutoObservable(this);
   }
 
-  addTask(title: string) {
-    this.tasks.push({
-        id: Date.now(),
-        title,
-        isChecked: false,
-        children: [],
-      });
+  toggleTask(task: Task, isChecked: boolean) {
+    task.isChecked = isChecked;
+    task.subTasks.forEach((subTask) => this.toggleTask(subTask, isChecked));
   }
 
-  toggleTask(id: number) {
-    const task = this.tasks.find((task) => task.id === id);
-    if (task) {
-      task.isChecked = !task.isChecked;
+  addTask(task: Task, parentTask?: Task) {
+    if (parentTask) {
+      parentTask.subTasks.push(task);
+    } else {
+      this.tasks.push(task);
     }
   }
+
+  addSubTask(parentTask: Task, title: string) {
+    const newTask: Task = {
+      id: Date.now(),
+      title,
+      isChecked: false,
+      subTasks: [],
+    };
+    parentTask.subTasks.push(newTask);
+  }
+
 }
 export const taskStore = new TaskStore();

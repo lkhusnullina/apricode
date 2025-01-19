@@ -1,10 +1,10 @@
 import styles from './App.module.scss';
-import Task from './components/Task/Task'
+import TasksList from './components/TasksList/TasksList';
 
 function App() {
   return (
     <div className={styles.container}>
-      <Task/>
+      <TasksList/>
     </div>
   )
 }
