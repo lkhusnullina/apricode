@@ -1,0 +1,13 @@
+.taskForm {
+  display: flex;
+  gap: 10px;
+
+  &__button {
+    padding: 10px 10px;
+    color: #ffffff;
+    font-size: 15px;
+    background-color: rgb(14, 131, 33);
+    border-radius: 10px;
+    border: none;
+  }
+}

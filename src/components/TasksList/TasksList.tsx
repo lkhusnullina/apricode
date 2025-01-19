@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { observer } from "mobx-react-lite";
 import { taskStore, Task } from "../../stores/TaskStore";
 import TaskItem from "../TaskItem/TaskItem";
 import styles from "./TasksList.module.scss";
+import TaskForm from "../TaskForm/TaskForm";
 
 const TasksList: React.FC = observer(() => {
-  const [newTask, setNewTask] = useState<string>("");
 
   const handleToggle = (task: Task, isChecked: boolean) => {
     taskStore.toggleTask(task, isChecked);
   };
 
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      taskStore.addTask({
-        id: Date.now(),
-        title: newTask,
-        isChecked: false,
-        subTasks: [],
-      });
-      setNewTask("");
-    }
+  const handleAddTask = (title: string) => {
+    taskStore.addTask({
+      id: Date.now(),
+      title,
+      isChecked: false,
+      subTasks: [],
+    });
   };
 
   const handleAddSubTask = (parentTask: Task, title: string) => {
@@ -28,19 +25,13 @@ const TasksList: React.FC = observer(() => {
   };
 
   return (
-    <div className={styles.tasks}>
-      <h1 className={styles.tasks__title}>Список задач</h1>
-      <div className={styles.tasks__block}>
-        <input
-          type="text"
-          placeholder="Напиши задачу"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-        />
-        <button className={styles.tasks__button} onClick={handleAddTask}>
-          Добавить задачу
-        </button>
-      </div>
+    <div className={styles.tasksList}>
+      <h1 className={styles.tasksList__title}>Список задач</h1>
+      <TaskForm
+        onAdd={handleAddTask}
+        placeholder="Напиши задачу"
+        buttonText="Добавить задачу"
+      />
       <div>
         {taskStore.tasks.map((task) => (
           <TaskItem

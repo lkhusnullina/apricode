@@ -1,4 +1,4 @@
-.subTask {
+.taskItem {
   margin-top: 10px;
   margin-left: 20px;
 
@@ -7,24 +7,5 @@
     display: flex;
     gap: 10px;
     align-items: center;
-  }
-
-  &__title {
-    font-size: 20px;
-  }
-
-  &__addSubTask {
-    display: flex;
-    gap: 10px;
-    
-  }
-
-  &__button {
-    padding: 10px 10px;
-    color: #ffffff;
-    font-size: 15px;
-    background-color: rgb(14, 131, 33);
-    border-radius: 10px;
-    border: none;
   }
 }
