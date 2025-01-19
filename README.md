@@ -9,6 +9,9 @@
 ### Технологии: 
 vite, typescript, react, mobx
 
+### Деплой проекта
+https://lkhusnullina.github.io/apricode/
+
 ### Запуск проекта
 
 #### Скачайте архив проекта или склонируйте репозиторий
