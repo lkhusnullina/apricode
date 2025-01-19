@@ -1,11 +1,11 @@
-import './App.css'
-import Task from './components/Task'
+import styles from './App.module.scss';
+import Task from './components/Task/Task'
 
 function App() {
   return (
-    <>
+    <div className={styles.container}>
       <Task/>
-    </>
+    </div>
   )
 }
 

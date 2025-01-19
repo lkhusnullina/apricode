@@ -1,0 +1,15 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
