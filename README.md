@@ -25,6 +25,6 @@ npm install
 ```
 #### Запустите проект командой
 ```sh
-npm run start
+npm run dev
 ```
 ![image](https://github.com/user-attachments/assets/b8ffe0a1-fb1d-4e3e-bc1c-f2ea4bddd46c)
